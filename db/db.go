@@ -21,11 +21,11 @@ func InitializeDB() {
 	}
 
 	dbdriver := os.Getenv("DBDRIVER")
-	username := os.Getenv("USERNAME")
-	password := os.Getenv("PASSWORD")
-	host := os.Getenv("HOST")
-	database := os.Getenv("DATABASE")
-	PORT := os.Getenv("PORT")
+	username := os.Getenv("PGUSER")
+	password := os.Getenv("PGPASSWORD")
+	host := os.Getenv("PGHOST")
+	database := os.Getenv("PGDATABASE")
+	PORT := os.Getenv("PGPORT")
 
 	DBURL := fmt.Sprintf("postgresql://%s:%s@%s:%s/%s?sslmode=disable", username, password, host, PORT, database)
 

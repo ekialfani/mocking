@@ -1,19 +1,21 @@
 package router
 
 import (
+	"os"
 	"products/controller/product_controller"
 	"products/db"
 
 	"github.com/gin-gonic/gin"
 )
 
-var PORT = ":8080"
+// var PORT = ":8080"
 
 func init() {
 	db.InitializeDB()
 }
 
 func StartRouter() {
+	var PORT = os.Getenv("PORT")
 	router := gin.Default()
 
 	productRouter := router.Group("/products")
@@ -24,5 +26,5 @@ func StartRouter() {
 		productRouter.DELETE("/:productId", product_controller.DeleteProduct)
 	}
 
-	router.Run(PORT)
+	router.Run(":" +PORT)
 }
