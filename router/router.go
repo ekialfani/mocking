@@ -15,9 +15,10 @@ func init() {
 }
 
 func StartRouter() {
-	var PORT = os.Getenv("PORT")
 	router := gin.Default()
 
+	var PORT = os.Getenv("PORT")
+	
 	productRouter := router.Group("/products")
 	{
 		productRouter.POST("/", product_controller.CreateProduct)
